@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.viewplayground.databinding.ActivityMainBinding
+import com.example.viewplayground.instagram_chat.InstagramActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createItems(): List<MainItem> {
-        return listOf()
+        return listOf(
+            MainItem(
+                label = "Instagram",
+                intent = Intent(this, InstagramActivity::class.java)
+            )
+        )
     }
 }
