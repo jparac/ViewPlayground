@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.viewplayground.databinding.ActivityInstagramBinding
@@ -41,6 +43,14 @@ class InstagramActivity : AppCompatActivity() {
                 adapter.notifyItems()
             }
         })
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.recycler) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(0, insets.top, 0, insets.bottom)
+            // Return CONSUMED if you don't want want the window insets to keep passing
+            // down to descendant views.
+            WindowInsetsCompat.CONSUMED
+        }
     }
 
     private fun getScreenSize() {
